@@ -1,7 +1,7 @@
 var snake;
 
 function setup() {
-    snake = new Snake(0, 0);
+    snake = new Snake(0, 0 , 400 , 400);
 }
 
 function draw() {
