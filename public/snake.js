@@ -8,9 +8,9 @@ Array.prototype.vag = function () {
 }
 
 class Snake {
-  constructor(x, y) {
-    createCanvas(900, 900);
-    frameRate(20);
+  constructor(x, y , h, w) {
+    createCanvas(h, w);
+    frameRate(3);
     this.score = 0;
     this.body = [createVector(0, 0)]
     this.vel = createVector(20, 0);
