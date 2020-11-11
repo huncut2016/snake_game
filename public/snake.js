@@ -12,9 +12,10 @@ class Snake {
     createCanvas(h, w);
     frameRate(3);
     this.score = 0;
-    this.body = [createVector(0, 0)]
+    this.body = [createVector(x, y)]
     this.vel = createVector(20, 0);
     this.food = this.new_food();
+    this.con = true;
   }
 
   update() {
@@ -63,31 +64,33 @@ class Snake {
   }
 
   dir(key) {
-    switch (true) {
-      case key === LEFT_ARROW && this.vel.x != 20:
-        this.vel.x = -20;
-        this.vel.y = 0;
-        break;
-      case key === RIGHT_ARROW && this.vel.x != -20:
-        this.vel.x = 20;
-        this.vel.y = 0;
-        break;
-      case key === UP_ARROW && this.vel.y != 20:
-        this.vel.x = 0;
-        this.vel.y = -20;
-        break;
-      case key === DOWN_ARROW && this.vel.y != -20:
-        this.vel.x = 0;
-        this.vel.y = 20;
-        break;
-      default:
-        textSize(32);
-        text("Rossz gomb!", 10, 30);
-        fill(255);
-        break;
+    if(this.con){
+      switch (true) {
+        case key === LEFT_ARROW && this.vel.x != 20:
+          this.vel.x = -20;
+          this.vel.y = 0;
+          break;
+        case key === RIGHT_ARROW && this.vel.x != -20:
+          this.vel.x = 20;
+          this.vel.y = 0;
+          break;
+        case key === UP_ARROW && this.vel.y != 20:
+          this.vel.x = 0;
+          this.vel.y = -20;
+          break;
+        case key === DOWN_ARROW && this.vel.y != -20:
+          this.vel.x = 0;
+          this.vel.y = 20;
+          break;
+        default:
+          textSize(32);
+          text("Rossz gomb!", 10, 30);
+          fill(255);
+          this.addbody();
+          break;
+      }
     }
-
-
+    this.con = false;
   }
 
   move() {
@@ -98,7 +101,7 @@ class Snake {
     var head = [createVector(x, y)];
     head.push(...array.vag());
     this.body = head;
-
+    this.con = true;
   }
 
   addbody() {
