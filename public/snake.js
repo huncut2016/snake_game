@@ -1,12 +1,3 @@
-Array.prototype.vag = function () {
-  var n = this;
-  var nn = [];
-  for (let i = 0; i < n.length - 1; i++) {
-    nn.push(n[i]);
-  }
-  return nn;
-}
-
 class Snake {
   constructor(x, y , h, w) {
     createCanvas(h, w);
@@ -93,12 +84,12 @@ class Snake {
   }
 
   move() {
-    if (this.body)
     var array = this.body;
     var x = this.body[0].x + this.vel.x;
     var y = this.body[0].y + this.vel.y;
     var head = [createVector(x, y)];
-    head.push(...array.vag());
+    array.pop();
+    head.push(...array);
     this.body = head;
     this.con = true;
   }
@@ -108,7 +99,7 @@ class Snake {
     var x = this.body[0].x + this.vel.x;
     var y = this.body[0].y + this.vel.y;
     var head = [createVector(x, y)];
-    head.push(...array.vag(), this.body[this.body.length - 1]);
+    head.push(...array);
     this.body = head;
 
   }
