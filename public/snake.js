@@ -86,7 +86,6 @@ class Snake {
           textSize(32);
           text("Rossz gomb!", 10, 30);
           fill(255);
-          this.addbody();
           break;
       }
     }
